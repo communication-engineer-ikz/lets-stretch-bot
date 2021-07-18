@@ -3,8 +3,10 @@
 */
 function letsStretchBot() {
     const stretch = getStretch();
+    const ACCESS_TOKEN = getLetsStretchBotAccessToken();
+    const USER_ID = getUserId();
 
-    postToLINE(stretch);
+    postToLINE(stretch, ACCESS_TOKEN, USER_ID);
 }
 
 function getStretch() {
@@ -26,9 +28,7 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
   }
 
-function postToLINE(message) {
-    const ACCESS_TOKEN = getLetsStretchBotAccessToken();
-    const USER_ID = getUserId();
+function postToLINE(message, ACCESS_TOKEN, USER_ID) {
     const line_endpoint = "https://api.line.me/v2/bot/message/push";
    
     const headers = {
